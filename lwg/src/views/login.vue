@@ -1,0 +1,161 @@
+<template>
+    <div class="box">
+        <!-- 图片 -->
+       <div class="box1">
+          <img src="@/assets/img/登/bar.png" alt="">
+       </div>
+       <!-- 验证 -->
+       <div class="box2">
+         <div class="from">
+              <p class="p1" > <input type="text" placeholder="请输入手机号" v-model="from.mobile"><span @click="yz" class="sp">{{txt}}</span></p>
+              <p class="p2"><input type="text" placeholder="请输入短信验证码" v-model="from.sms_code"></p>
+              <p class="p3"><span>*未注册的手机号将自动注册</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;<b>使用密码登录</b></p>
+              <van-button block type="danger" @click="deng"> 登录</van-button>
+         </div>
+       </div>
+
+    </div>
+</template>
+
+<script>
+
+// import request from '@/http/request.js'// 第1 axios
+import {smsCode,login} from '@/http/api'
+export default {
+   data(){
+       return{
+           act:0,
+           txt:"获取验证码",
+           from:{
+               mobile:'',
+               sms_code:'',//验证码
+           }
+       }
+   },
+   created(){
+    
+   },
+   methods:{
+    async yz(){
+          var reg = /^1[3-9]\d{9}$/
+           if (!reg.test(this.from.mobile)) {//正则
+               this.$toast.fail("手机格式不对")
+               return false
+           }
+           var time =60
+           var timer =setInterval(() => {
+               this.txt=`还有${time}秒后登录`
+               if (time<=0) {
+                   clearInterval(timer)
+                   this.txt='获取验证码'
+               }
+               time--
+           }, 1000);
+    //    let res = await request.post('/smsCode',{  mobile:this.from.mobile,  sms_type:'login' }) //第一次封装
+        let res =await smsCode({ mobile:this.from.mobile,sms_type:'login' })    //第2次封装
+             
+              console.log(res)
+       },
+     async  deng(){//登录
+         var reg = /^1[3-9]\d{9}$/
+           if (!reg.test(this.from.mobile)) {//正则
+               this.$toast.fail("手机格式不对")
+               return false
+           }
+          let res = await login({mobile:this.from.mobile,sms_code:this.from.sms_code,type:2,client:'1'})
+             if (res.code==200) {
+                 this.$store.commit("dotoken",res.data)
+                 this.$toast.success("登录成功")
+                 this.$router.push("/my")
+             } else {
+                 this.$toast.fail(res.msg)
+             }
+       }
+   
+    //   login(){
+    //        this.axios.post('/login',{
+    //            mobile:this.from.mobile,
+    //            sms_code:this.from.sms_code,
+    //            type:2,
+    //            client:"1"
+    //        }).then(res=>{
+    //            console.log(res)
+    //            if (res.code==200) {//成功
+    //                localStorage.setItem("token",JSON.stringify(res.data))
+    //                this.$router.push("/setting")
+    //            }
+               
+    //        })
+    //    }
+   }
+};
+</script>
+
+<style lang="scss" scoped>
+.box{
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+    .box1{
+        width: 100%;
+        height: 350px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .box2{
+        width: 100%;
+         margin: auto;
+        height: 370px;
+        background: white;
+        margin-top: 15px;
+        .from{
+            width: 100%;
+            height: 300px;
+          .p1{
+              width: 90%;
+               font-size: 18px;
+               margin-left: 20px;
+               input{
+               padding: 10px;
+               border: 0;
+               width: 60%;
+              }
+              .sp{
+                  color: red;
+                  font-size: 16px;
+                  font-family: bode;
+              }
+          }
+          .p1:hover{
+              border-bottom: 1px solid red;
+          }
+           .p2{
+              width: 90%;
+               margin-left: 20px;
+             
+               input{
+                   width: 60%;
+                    border: 0;
+               box-sizing: border-box;
+                  padding: 10px;
+                  font-size: 18px;
+              }
+          }
+          .p2:hover{
+              border-bottom: 1px solid red;
+          }
+          .p3{
+              width: 90%;
+              margin: auto;
+              text-align: center;
+          }
+         .van-button{
+             width: 90%;
+             margin:30px auto;
+         }
+        }
+    }
+}
+</style>
