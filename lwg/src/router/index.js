@@ -12,8 +12,8 @@ const routes = [
   // },
   {
     path: '/',
-    
-    component: () => import('@/views/home'),
+    redirect:'/index',
+    component: () => import('@/views/Home'),
     children:[
       {
         path: '/index',
@@ -35,6 +35,11 @@ const routes = [
         path: '/my',
         component: () => import('@/views/my')
       },
+      {
+        path: '/mys/mys',//登录成功
+        component: () => import('@/views/mys/mys')
+      },
+     
     ]
   },
  {
@@ -42,9 +47,18 @@ const routes = [
   component: () => import('@/views/login'),
  },
  {
-  path: '/setting',
+  path: '/setting',//验证码设置
   component: () => import('@/views/setting')
-}
+},
+{
+  path: '/mys/tu',//退出页
+  component: () => import('@/views/mys/tu')
+},
+{
+  path: '/index/teacher',//老师详情
+  component: () => import('@/views/index/teacher')
+},
+
 ]
 
 const router = new VueRouter({

@@ -1,12 +1,13 @@
 <template>
     <div class="box">
-        <div class="top">
-            <span>设置密码</span>
-        </div>
       <div class="centent">
-        <input type="text" placeholder="请设置登录密码">
-        <input type="text" placeholder="请再次输入密码">
-        <van-button type="danger" block>确定</van-button>
+        <!-- <input type="text" placeholder="请设置登录密码">
+        <input type="text" placeholder="请再次输入密码"> -->
+         <van-cell-group @click="$router.push('/login')">
+      <van-cell title="设置密码"  icon="lock" is-link />
+      <van-cell title="注销账号"  icon="close" is-link />
+    </van-cell-group>
+        <van-button type="danger" @click="tui" block >退出登录</van-button>
       </div>
      <button @click="$router.push('/mys/mys')" class="btn">跳过</button>
     </div>
@@ -14,7 +15,15 @@
 
 <script>
     export default {
-        
+        data(){
+            return{}
+        },
+        methods:{
+            tui(){
+                this.$store.state.token=''//清除token
+                this.$router.push('/my')
+            }
+        }
     }
 </script>
 

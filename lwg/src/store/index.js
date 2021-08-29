@@ -13,7 +13,7 @@ export default new Vuex.Store({
   },
   mutations: {
     dotoken(state,data){
-      state.token=data.token
+      state.token=data
     }
   },
   actions: {

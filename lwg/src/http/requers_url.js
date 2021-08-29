@@ -2,12 +2,10 @@
 module.exports={
     smsCode:'/smsCode',
     login:'/login',
-    password:'/password'
+    password:'/password',
+    tabbar:'/nav/bottom',
+    banner:'/banner',
+    appIndex:'/recommend/appIndex',//资深讲师index页
+    teacher:'/teacher'
 }
 
-// 登录
-// module.exports={
-//     login:'/login',
-//     post:'/post',
-
-// }

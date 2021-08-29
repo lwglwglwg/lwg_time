@@ -9,7 +9,7 @@
          <div class="from">
               <p class="p1" > <input type="text" placeholder="请输入手机号" v-model="from.mobile"><span @click="yz" class="sp">{{txt}}</span></p>
               <p class="p2"><input type="text" placeholder="请输入短信验证码" v-model="from.sms_code"></p>
-              <p class="p3"><span>*未注册的手机号将自动注册</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;<b>使用密码登录</b></p>
+              <p class="p3"><span>*未注册的手机号将自动注册</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;<b>使用密码登录</b></p>
               <van-button block type="danger" @click="deng"> 登录</van-button>
          </div>
        </div>
@@ -29,7 +29,8 @@ export default {
            from:{
                mobile:'',
                sms_code:'',//验证码
-           }
+           },
+          
        }
    },
    created(){
@@ -63,13 +64,19 @@ export default {
                return false
            }
           let res = await login({mobile:this.from.mobile,sms_code:this.from.sms_code,type:2,client:'1'})
-             if (res.code==200) {
-                 this.$store.commit("dotoken",res.data)
-                 this.$toast.success("登录成功")
-                 this.$router.push("/my")
-             } else {
-                 this.$toast.fail(res.msg)
+          console.log(res,9999);
+          
+             if (res.data.code==200) {
+                  this.$store.commit("dotoken",res.data.data)
+                    this.$router.push("/mys/mys")
+                 this.$toast.success('登录成功')
+                //  localStorage.setItem("token",JSON.stringify(res.data))
+    
+             } 
+            else {
+                 this.$toast.fail('登录失败')
              }
+            
        }
    
     //   login(){

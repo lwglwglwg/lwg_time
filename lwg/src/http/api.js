@@ -13,8 +13,40 @@ export function smsCode(arg){
 // 登录
 export function login(arg){
     return request({
-        url:'/login',
+        url:requers_url.login,
         data:arg,
         method:'post'
+    })
+}
+// tabbar
+export function tabbar(){
+    return request({
+         url:requers_url.tabbar,
+         data:{},
+         method:'get'  
+    })
+}
+// banner
+export function banner() {
+     return request({
+         url:requers_url.banner,
+         data:{},
+         method:'get'
+     })
+}
+// appIndex
+export function appIndex(){
+     return request({
+         url:requers_url.appIndex,
+         data:{},
+         method:"get"
+     })
+}
+// teacher
+export function teacher(){
+    return request({
+        url:requers_url.teacher,
+        data:{},
+        method:"get"
     })
 }
