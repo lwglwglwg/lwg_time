@@ -25,7 +25,7 @@
                <van-card
                v-for="item in appIndex_list"
                :key="item.teacher_id"
-               @click="$router.push('/index/teacher?id='+item.teacher_id)"
+               @click="$router.push('/detail?teacher_id='+item.teacher_id)"
               >
               <template #thumb> 
                   <img :src="item.teacher_avatar" style="width:50px;height:50px;border-radius:50%;">
@@ -60,9 +60,12 @@
                  <span >{{item.sales_num}}人已报名</span>
               </template>
                <template #num> 
-                 <s>{{item.underlined_price}}</s>
-                 <b v-if="item.price==0? '':'免费'" style="color:red;">{{item.price}}</b>
-
+                   <!-- price==underlined_price -->
+                   <p v-if="item.price==item.underlined_price"><span  style="color:green;">免费</span></p>
+                   <p v-else>
+                       <s>{{item.underlined_price}}</s>
+                       <b  style="color:red;" >{{item.price}}</b>
+                  </p>
               </template>
               </van-card>
             </div>

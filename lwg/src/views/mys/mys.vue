@@ -22,6 +22,7 @@
             :icon="item.icon"
             :text="item.title"
              @click="$router.push('/login')"
+             :badge="a" 
           />
         </van-grid>
       </div>
@@ -80,12 +81,16 @@ export default {
           color: "red",
           title: "我的积分"
         }
-      ]
+      ],
+      a:1
     };
   },
   methods: {
     login() {
       this.$router.push("/login");
+    },
+    add(){
+         this.a++
     }
   }
 };

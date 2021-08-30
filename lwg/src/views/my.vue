@@ -17,7 +17,7 @@
             :icon="item.icon"
             :text="item.title"
              @click="$router.push('/login')"
-             badge="2+" 
+             :badge="$store.state.token.total_continuous_days" 
           />
         </van-grid>
       </div>

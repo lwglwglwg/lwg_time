@@ -3,13 +3,13 @@
       <div class="centent">
         <!-- <input type="text" placeholder="请设置登录密码">
         <input type="text" placeholder="请再次输入密码"> -->
-         <van-cell-group @click="$router.push('/login')">
-      <van-cell title="设置密码"  icon="lock" is-link />
-      <van-cell title="注销账号"  icon="close" is-link />
+         <van-cell-group >
+      <van-cell title="设置密码"  icon="lock" is-link  @click="$router.push('/sms/find_sms')"/>
+      <van-cell title="注销账号"  icon="close" is-link @click="$router.push('/')"/>
     </van-cell-group>
         <van-button type="danger" @click="tui" block >退出登录</van-button>
       </div>
-     <button @click="$router.push('/mys/mys')" class="btn">跳过</button>
+    
     </div>
 </template>
 
@@ -20,7 +20,7 @@
         },
         methods:{
             tui(){
-                this.$store.state.token=''//清除token
+                this.$store.commit('tui')//清除token
                 this.$router.push('/my')
             }
         }

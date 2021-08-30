@@ -51,11 +51,19 @@ const routes = [
   component: () => import('@/views/setting')
 },
 {
+  path: '/sms/sms',//验证码登录
+  component: () => import('@/views/sms/sms')
+},
+{
+  path: '/sms/find_sms',//设置密码登录
+  component: () => import('@/views/sms/find_sms')
+},
+{
   path: '/mys/tu',//退出页
   component: () => import('@/views/mys/tu')
 },
 {
-  path: '/index/teacher',//老师详情
+  path: '/detail',//老师详情
   component: () => import('@/views/index/teacher')
 },
 

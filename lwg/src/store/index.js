@@ -14,7 +14,19 @@ export default new Vuex.Store({
   mutations: {
     dotoken(state,data){
       state.token=data
+    },
+    tui(state){//清除token
+       state.token=""
     }
+  },
+  getters:{
+    // sums(state){
+    //       let num =0
+    //      state.token.forEach(item=>{
+    //          num += item.status
+    //      })
+    //      return [num]
+    // }
   },
   actions: {
   },

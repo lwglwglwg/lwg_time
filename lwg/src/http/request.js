@@ -2,13 +2,13 @@ import axios from 'axios'
 import { baseUrl } from "@/config/index.js"// 多环境url
 import {Toast, Loading} from "vant"
 
-
+import store from '@/store/index.js' //存入vuex
 // 基础
 const service = axios.create({
     baseURL: baseUrl,//url地址
     timeout: 5000,
 })
-// 请求
+// 请求 
 service.interceptors.request.use(
     (config) => {
            Toast.loading({//loading
@@ -16,6 +16,8 @@ service.interceptors.request.use(
             forbidClick: true,
             duration:30000,
           });
+      
+          config.headers['Authorization'] = store.state.token//将token存到本地
 
         return config
     }, (error) => {

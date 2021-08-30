@@ -1,41 +1,40 @@
 <template>
     <div class="box">
+        
         <!-- 图片 -->
        <div class="box1">
+           <span class="s">密码登录</span>
           <img src="@/assets/img/登/bar.png" alt="">
        </div>
        <!-- 验证 -->
        <div class="box2">
          <div class="from">
-              <p class="p1" > <input type="text" placeholder="请输入手机号" v-model="from.mobile"><span @click="yz" class="sp">{{txt}}</span></p>
-              <p class="p2"><input type="text" placeholder="请输入短信验证码" v-model="from.sms_code"></p>
-              <p class="p3"><span>*未注册的手机号将自动注册</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    &emsp;&emsp; &emsp;<b @click="$router.push('/sms/sms')">使用密码登录</b></p>
+              <p class="p1" > <input type="text" placeholder="请输入手机号" v-model="from.mobile"></p>
+              <p class="p2"><input type="text" placeholder="请输入密码" v-model="from.password"></p>
+              <p class="p3"><span @click="$router.push('/sms/find_sms')">找回密码</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;<b @click="$router.push('/login')">注册/验证码登录</b></p>
               <van-button block type="danger" @click="deng"> 登录</van-button>
          </div>
-         <div class="bottom">
+       </div>
+        <div class="bottom">
              <p><van-checkbox v-model="checked"></van-checkbox></p>
             <p><span>我同意</span><span style="color:red;">用户注册协议</span>和<span style="color:red;">隐私保护协议</span></p>
-         </div>
-       </div>
-
+         </div> 
     </div>
 </template>
 
 <script>
 
-// import request from '@/http/request.js'// 第1 axios
-import {smsCode,login} from '@/http/api'
+import {login} from "@/http/api.js"
 export default {
    data(){
        return{
            act:0,
-           checked:false,//协议
-           txt:"获取验证码",
            from:{
                mobile:'',
-               sms_code:'',//验证码
+                password:'',//验证码
+             
            },
+           checked:false,//登录
           
        }
    },
@@ -43,51 +42,33 @@ export default {
     
    },
    methods:{
-    async yz(){//验证码
-          var reg = /^1[3-9]\d{9}$/
-           if (!reg.test(this.from.mobile)) {//正则
-               this.$toast.fail("手机格式不对")
-               return false
-           }
-           var time=60
-           var timer =setInterval(() => {
-                 this.txt=`还有${time}后解锁`
-                 if (time<=0) {
-                     clearInterval(timer)
-                     this.txt='获取验证码'
-                 }
-                 time--
-           }, 1000);
-    //    let res = await request.post('/smsCode',{  mobile:this.from.mobile,sms_type:'login' }) //第一次封装
-        let res =await smsCode({ mobile:this.from.mobile,sms_type:'login' })    //第2次封装
-             
-              console.log(res)
-       },
-     async  deng(){//登录
-         var reg = /^1[3-9]\d{9}$/
-           if (!reg.test(this.from.mobile)) {//正则
-               this.$toast.fail("手机格式不对")
-               return false
-           }
-           if (this.checked==false) {
+      async  deng(){
+            if (this.checked==false) {
                this.$toast.fail('请先勾选协议，再登录')
                return false
            }
-          let res = await login({mobile:this.from.mobile,sms_code:this.from.sms_code,type:2,client:'1'})
-          console.log(res,9999);
-          
-             if (res.data.code==200) {
+          let res = await login({mobile:this.from.mobile,password:this.from.password,type:1,client:'1'})//type：1账号密码
+              if (res.data.code==200) {
                   this.$store.commit("dotoken",res.data.data)
+                  this.$toast.success("登录成功")
                     this.$router.push("/mys/mys")
-                 this.$toast.success('登录成功')
-                //  localStorage.setItem("token",JSON.stringify(res.data))
+              } else {
+                  this.$toast.fail("密码或手机号错误")
+              }
+          
+        }
+    // async yz(){
+    //       var reg = /^1[3-9]\d{9}$/
+    //        if (!reg.test(this.from.mobile)) {//正则
+    //            this.$toast.fail("手机格式不对")
+    //            return false
+    //        }
+          
+    //    let res = await request.post('/smsCode',{  mobile:this.from.mobile,  sms_type:'login' }) //第一次封装
+        // let res =await smsCode({ mobile:this.from.mobile,sms_type:'login' })    //第2次封装
+             
+    //    },
     
-             } 
-            else {
-                 this.$toast.fail('登录失败')
-             }
-            
-       }
    
     //   login(){
     //        this.axios.post('/login',{
@@ -109,15 +90,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .box{
     width: 100%;
     height: 100%;
-    position: relative;
     background: #f0f0f0;
+    position: relative;
     .box1{
         width: 100%;
         height: 350px;
+        position: relative;
+        .s{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: red;
+            font-size: 20px;
+            box-sizing: border-box;
+        }
         img{
             width: 100%;
             height: 100%;
@@ -176,7 +165,7 @@ export default {
          }
         }
     }
-    .bottom{
+      .bottom{
         width: 100%;
         display: flex;
         position: absolute;
@@ -185,4 +174,5 @@ export default {
         justify-content: center;
     }
 }
+
 </style>

@@ -10,10 +10,18 @@ export function smsCode(arg){
         method:'post'
     })
 }
-// 登录
+// 验证码登录
 export function login(arg){
     return request({
         url:requers_url.login,
+        data:arg,
+        method:'post'
+    })
+}
+// 密码登录
+export function password(arg) {
+    return request({
+        url:requers_url.password,
         data:arg,
         method:'post'
     })
@@ -43,10 +51,18 @@ export function appIndex(){
      })
 }
 // teacher
-export function teacher(){
+export function teacher(arg){
     return request({
-        url:requers_url.teacher,
-        data:{},
+        url:requers_url.teacher+arg,//arg为teacher_id
+        data:arg,
         method:"get"
+    })
+}
+//// teacher
+export function mainCourse(arg){
+    return request({
+        url:requers_url.mainCourse,//主讲课程
+        data:arg,
+        method:"post"
     })
 }
