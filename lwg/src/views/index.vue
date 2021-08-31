@@ -93,7 +93,10 @@
                  <span>{{item.introduction}}</span>
               </template>
               </van-card>
+              <!-- 返回顶部 -->
+            <top></top>
             </div>
+            
     </div>
 </template>
 
@@ -101,10 +104,12 @@
 // 组件
 import Navbar from "@/components/nav_bar"
 import bar from "@/components/bar"
+import top from "@/components/top"
+
 // 方法
 import {banner,appIndex} from "@/http/api.js"
     export default {
-        components:{Navbar,bar},
+        components:{Navbar,bar,top},
         data(){
             return{
                 appIndex_list:[],

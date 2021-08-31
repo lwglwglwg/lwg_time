@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// 持久化
+// 1 导入vuex-persist 
 import VuexPersistence from 'vuex-persist'
 const vuexLocal = new VuexPersistence({
    storage: window.localStorage
@@ -9,28 +9,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    token:'',
+    token1:'',
+    token:[]
   },
   mutations: {
     dotoken(state,data){
-      state.token=data
+      state.token1=data.remember_token//存token
+      state.token=data//数据
     },
+    
     tui(state){//清除token
        state.token=""
     }
   },
   getters:{
-    // sums(state){
-    //       let num =0
-    //      state.token.forEach(item=>{
-    //          num += item.status
-    //      })
-    //      return [num]
-    // }
+    
   },
   actions: {
   },
   modules: {
-  },
-  plugins: [vuexLocal.plugin]
+  },//2 配置plugins
+  plugins: [vuexLocal.plugin] 
 })

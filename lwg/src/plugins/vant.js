@@ -2,7 +2,7 @@
 import Vue from 'vue'
 import {Button,Tabbar, TabbarItem,Grid, GridItem ,Cell,
      CellGroup,Toast,Icon,Swipe, SwipeItem,Card,Tag,Checkbox,
-     Tab, Tabs } from "vant"
+     Tab, Tabs,Calendar,Dialog ,Search } from "vant"
 
 Vue.use(Button)
 Vue.use(Tabbar)
@@ -20,5 +20,11 @@ Vue.use(Tag);
 Vue.use(Checkbox)
 Vue.use(Tab);
 Vue.use(Tabs);
+Vue.use(Calendar);
+Vue.use(Dialog);
+Vue.use(Search);
+
+
+
 
 

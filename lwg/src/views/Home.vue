@@ -1,6 +1,8 @@
 <template>
     <div>
-<router-view />
+        <transition>
+        <router-view />
+        </transition>
  <!-- <van-tabbar route>
   <van-tabbar-item replace to="/index" icon="home-o">首页</van-tabbar-item>
   <van-tabbar-item replace to="/class" icon="search">课程</van-tabbar-item>

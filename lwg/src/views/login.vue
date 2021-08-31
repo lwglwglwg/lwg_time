@@ -45,8 +45,13 @@ export default {
    methods:{
     async yz(){//验证码
           var reg = /^1[3-9]\d{9}$/
+          var regma = /^[0-9]\d{6}$/
            if (!reg.test(this.from.mobile)) {//正则
                this.$toast.fail("手机格式不对")
+               return false
+           }
+            if (!regma.test(this.from.sms_code)) {//正则
+               this.$toast.fail("验证码必须6位")
                return false
            }
            var time=60
@@ -81,7 +86,7 @@ export default {
                     this.$router.push("/mys/mys")
                  this.$toast.success('登录成功')
                 //  localStorage.setItem("token",JSON.stringify(res.data))
-    
+                   
              } 
             else {
                  this.$toast.fail('登录失败')

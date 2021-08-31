@@ -51,6 +51,18 @@ const routes = [
   component: () => import('@/views/setting')
 },
 {
+  path: '/mys/sign',//签到
+  component: () => import('@/views/mys/sign')
+},
+{
+  path: '/mys/htj',//好课推荐
+  component: () => import('@/views/mys/htj')
+},
+{
+  path: '/mys/jfxq',//签到详情
+  component: () => import('@/views/mys/jfxq')
+},
+{
   path: '/sms/sms',//验证码登录
   component: () => import('@/views/sms/sms')
 },

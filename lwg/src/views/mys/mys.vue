@@ -8,7 +8,7 @@
              <van-icon name="manager" class="user" />
           </p>
             <p> <span class="tt">{{$store.state.token.nickname}}</span></p>
-            <p class="tag"><van-tag type="primary" size="large">签到</van-tag></p>
+            <p class="tag"><van-tag type="primary" size="large" @click="$router.push('/mys/sign')">以签到</van-tag></p>
       </div>
            
      
@@ -125,7 +125,7 @@ export default {
           }
         .tag{
             .van-tag{
-                width: 10%;
+                width: 13%;
                 position: absolute;
                 right: 0;
                 top: 86px;

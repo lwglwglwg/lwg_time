@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { baseUrl } from "@/config/index.js"// 多环境url
+import { baseUrl } from "@/config/index.js"// 多环境变量url
 import {Toast, Loading} from "vant"
 
 import store from '@/store/index.js' //存入vuex
@@ -17,7 +17,7 @@ service.interceptors.request.use(
             duration:30000,
           });
       
-          config.headers['Authorization'] = store.state.token//将token存到本地
+          config.headers['Authorization'] ="Bearer"+store.state.token1//将token1存到本地
 
         return config
     }, (error) => {

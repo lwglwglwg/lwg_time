@@ -1,12 +1,16 @@
 // 验证码
 module.exports={
-    smsCode:'/smsCode',//验证码
-    login:'/login',//登录
-    password:'/password',//密码
-    tabbar:'/nav/bottom',
-    banner:'/banner',
-    appIndex:'/recommend/appIndex',//资深讲师index页
-    teacher:'/teacher/',//讲师详情
-    mainCourse:'/teacher/mainCourse',//主讲课程
+    smsCode:'/app/smsCode',//验证码
+    login:'/app/login',//登录
+    password:'/app/password',//密码
+    tabbar:'/app/nav/bottom',
+    banner:'/app/banner',
+    appIndex:'/app/recommend/appIndex',//资深讲师index页
+    teacher:'/app/teacher/',//讲师详情
+    mainCourse:'/app/teacher/mainCourse',//主讲课程
+    courseInfo:'/app/courseInfo/',//主讲课程详情 id
+    jf:'/integral/shop/index',//积分
+    jfxq:'/integral/shop/detail/',//积分详情
 }
+
 

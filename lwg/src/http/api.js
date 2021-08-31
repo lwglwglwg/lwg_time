@@ -66,3 +66,22 @@ export function mainCourse(arg){
         method:"post"
     })
 }
+//courseInfo/主讲课程详情 id
+
+
+// 积分
+export function jf(params){
+    return request({
+        url:requers_url.jf,//主讲课程
+        params:params,
+        method:"get"
+    })
+}
+//积分详情
+export function jfxq (arg){
+      return request({
+          url:requers_url.jfxq+arg,//详情
+          data:arg,
+          method:'get'  
+      })
+}
