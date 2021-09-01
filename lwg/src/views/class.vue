@@ -7,7 +7,7 @@
                <van-card
                v-for="item in appIndex_list3"
                :key="item.teacher_id"
-               @click="$router.push('/index/tearchlist?id='+item.teacher_id)"
+                @click="$router.push('/detail?teacher_id='+item.teacher_id)"
               >
               <template #thumb> 
                   <img :src="item.teacher_avatar" style="width:50px;height:50px;border-radius:50%;">
@@ -31,6 +31,7 @@ import {appIndex} from "@/http/api"
         },
         async created(){
           let res = await appIndex()
+          
           this.appIndex_list3=res.data.data[2].list
         }
     }

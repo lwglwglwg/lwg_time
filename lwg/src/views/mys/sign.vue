@@ -22,6 +22,7 @@
             :poppable="false"
             :show-confirm="false"
             :style="{ height: '300px' }"
+            :formatter="formatter" 
           />
         </div>
       </div>
@@ -79,29 +80,49 @@
 </template>
 
 <script>
-import { jf } from "@/http/api";
+import { jf, sigin } from "@/http/api";
 export default {
   data() {
     return {
      
       show: true,
       minDate: new Date(2010, 0, 1),
+      
       jf_list:[],
       jf_list2:[],//type2
     };
+  },
+ async created(){
+       const tady = new Date()
+      const year = tady.getFullYear()
+      const month_new = tady.getMonth()+1
+      const date_new = tady.getDate()
+
+      let res = await sigin({data:`${year}-${month_new}-${date_new}`})
+        console.log(res,22222)
+      
   },
   mounted() {
     this.getjf();
     this.getjf2()
   },
   methods: {
-    formatDate(date) {
-      //日期
-      return `${date.getMonth() + 1}/${date.getDate()}`;
-    },
-    onConfirm(date) {
-      this.show = false;
-      this.date = this.formatDate(date);
+   formatter(day) {
+      const month = day.date.getMonth() + 1;
+      const date = day.date.getDate();
+
+      const tady = new Date()
+      const year = tady.getFullYear()
+      const month_new = tady.getMonth()+1
+      const date_new = tady.getDate()
+      if (month==month_new&&date==date_new) {//与日期表上的一样
+          day.bottomInfo = '+1';
+          day.text="√"
+          // console.log(year,month_new,date_new)
+      }
+
+       
+      return day;
     },
     qd(){//签到
         this.$dialog.alert({
@@ -158,14 +179,24 @@ export default {
     height: 100px;
     margin: auto;
     position: relative;
-    .van-calendar {
-      width: 90%;
-      height: 100px;
-      margin: auto;
-      border-radius: 20px;
-      box-shadow: 0 0 10px white;
-    }
+    // .van-calendar {
+    //   width: 90%;
+    //   height: 100px;
+    //   margin: auto;
+    //   border-radius: 20px;
+    //   box-shadow: 0 0 10px white;
+    // }
+   
   }
+  /deep/.van-calendar__bottom-info{
+    bottom: -3px !important;
+  }
+  /deep/.van-calendar__selected-day{
+     border-radius: 50%;
+    
+     box-sizing: border-box;
+  }
+ 
   .bar {
     width: 100%;
     height: 280px;

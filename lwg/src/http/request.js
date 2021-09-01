@@ -14,7 +14,7 @@ service.interceptors.request.use(
            Toast.loading({//loading
             message: '加载中...',
             forbidClick: true,
-            duration:30000,
+            duration:5000,
           });
       
           config.headers['Authorization'] ="Bearer"+store.state.token1//将token1存到本地

@@ -20,7 +20,7 @@ const routes = [
         component: () => import('@/views/index')
       },
       {
-        path: '/class',
+        path: '/class',//名师详情
         component: () => import('@/views/class')
       },
       {
@@ -63,6 +63,10 @@ const routes = [
   component: () => import('@/views/mys/jfxq')
 },
 {
+  path: '/mys/search',//签到详情 搜索
+  component: () => import('@/views/mys/search')
+},
+{
   path: '/sms/sms',//验证码登录
   component: () => import('@/views/sms/sms')
 },
@@ -75,9 +79,13 @@ const routes = [
   component: () => import('@/views/mys/tu')
 },
 {
-  path: '/detail',//老师详情
+  path: '/detail',//老师详情 courseInfo
   component: () => import('@/views/index/teacher')
 },
+{
+  path: '/basis',//主讲课程详情 
+  component: () => import('@/views/index/basis')
+}
 
 ]
 

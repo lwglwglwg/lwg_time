@@ -15,6 +15,12 @@ Vue.filter("money",(val)=>{
   return Number(val).toFixed(2)
   
 })
+// 过滤时间
+import * as filters from './http/filter';
+Object.keys(filters).forEach(key => {
+      Vue.filter(key, filters[key])
+  });
+  
 Vue.config.productionTip = false
 // 原型
 Vue.prototype.$axios=axios

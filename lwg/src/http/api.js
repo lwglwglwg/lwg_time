@@ -58,7 +58,7 @@ export function teacher(arg){
         method:"get"
     })
 }
-//// teacher
+//// teacher 
 export function mainCourse(arg){
     return request({
         url:requers_url.mainCourse,//主讲课程
@@ -67,8 +67,29 @@ export function mainCourse(arg){
     })
 }
 //courseInfo/主讲课程详情 id
-
-
+export function basis(arg){
+    return request({
+        url:requers_url.basis+arg,//主讲课程
+        data:arg,
+        method:"get"
+    })
+}
+//courseInfo/课程大纲
+export function kcdg(arg){
+    return request({
+        url:"/app/courseChapter",//主讲课程
+        data:arg,
+        method:"post"
+    })
+}
+//courseInfo/团队介绍 id basis_Tuandui
+export function basis_Tuandui(arg){
+    return request({
+        url:requers_url.basis_Tuandui+arg,//主讲课程
+        data:arg,
+        method:"get"
+    })
+}
 // 积分
 export function jf(params){
     return request({
@@ -84,4 +105,12 @@ export function jfxq (arg){
           data:arg,
           method:'get'  
       })
+}
+// 签到 年月日
+export function sigin(arg){
+    return request({
+        url:requers_url.sigin,
+        data:arg,
+        method:"get"
+    })
 }

@@ -2,7 +2,8 @@
 import Vue from 'vue'
 import {Button,Tabbar, TabbarItem,Grid, GridItem ,Cell,
      CellGroup,Toast,Icon,Swipe, SwipeItem,Card,Tag,Checkbox,
-     Tab, Tabs,Calendar,Dialog ,Search } from "vant"
+     Tab, Tabs,Calendar,Dialog ,Search ,Popup,DropdownMenu,DropdownItem,Empty,
+     Collapse, CollapseItem} from "vant"
 
 Vue.use(Button)
 Vue.use(Tabbar)
@@ -23,8 +24,11 @@ Vue.use(Tabs);
 Vue.use(Calendar);
 Vue.use(Dialog);
 Vue.use(Search);
-
-
-
+Vue.use(Popup);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(Empty);
+Vue.use(Collapse);
+Vue.use(CollapseItem);
 
 

@@ -15,6 +15,7 @@
                <van-card
                v-for="item in class_list"
                :key="item.id"
+               @click="$router.push('/basis?basis_id='+item.id)"
             
               >
               <template #thumb> 
@@ -45,7 +46,7 @@ export default {
       teacher_id: this.$route.query.teacher_id, //id
       teacher_conent: [],
        class_list:[],//主讲课程
-      active: 1 //tab
+      active: 0 //tab
     };
   },
     mounted() {

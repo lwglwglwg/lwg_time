@@ -16,9 +16,9 @@
        <!-- 搜索 -->
        <div class="search">
            <van-search
-           v-model="value"
            shape="round"
            placeholder="请输入搜索关键词"
+           @click="$router.push('/mys/search')"
          />
        </div>
     </div>
