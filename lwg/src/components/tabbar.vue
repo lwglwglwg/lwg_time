@@ -18,7 +18,7 @@ import {tabbar} from '@/http/api.js'
             return{
                 tabbar_list:[],
                 active:0,//高亮
-
+                
             }
         },
        async created(){

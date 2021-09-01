@@ -14,6 +14,7 @@ module.exports={
     basis:'/app/courseInfo/basis_id=',//主讲课程详情 id
      
        kcdg:"/app/courseChapter",//字符魅力
+    baoming:'/app/order/shopInfo',//报名
 }
 
 

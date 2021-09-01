@@ -85,6 +85,10 @@ const routes = [
 {
   path: '/basis',//主讲课程详情 
   component: () => import('@/views/index/basis')
+},
+{
+  path: '/baoming',//报名
+  component: () => import('@/views/index/baoming')
 }
 
 ]

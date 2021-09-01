@@ -50,7 +50,7 @@
                <van-card
                v-for="item in appIndex_list2"
                :key="item.teacher_id"
-               @click="$router.push('/index/tearchlist?id='+item.teacher_id)"
+              @click="$router.push('/basis?basis_id='+item.id)"
               >
               <template #thumb> 
                   <img :src="item.cover_img" style="width:100%;height:100%;border-radius:50%;">
@@ -73,7 +73,7 @@
              <!-- lsit3 -->
             <div class="list3">
                  <!-- 名师 -->
-             <van-cell-group class="z" @click="$router.push('/class')">
+             <van-cell-group class="z" >
               <van-cell title="名师"  is-link  value="更多">
                   <template #icon>
                        <span class="ss"></span>
@@ -83,7 +83,7 @@
                <van-card
                v-for="item in appIndex_list3"
                :key="item.teacher_id"
-               @click="$router.push('/index/tearchlist?id='+item.teacher_id)"
+                @click="$router.push('/detail?teacher_id='+item.teacher_id)"
               >
               <template #thumb> 
                   <img :src="item.teacher_avatar" style="width:50px;height:50px;border-radius:50%;">

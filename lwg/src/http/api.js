@@ -74,7 +74,16 @@ export function basis(arg){
         method:"get"
     })
 }
-//courseInfo/课程大纲
+
+//courseInfo/团队介绍 id basis_Tuandui
+export function basis_Tuandui(arg){
+    return request({
+        url:requers_url.basis_Tuandui+arg,//主讲课程
+        data:arg,
+        method:"get"
+    })
+}
+//courseInfo/课程大纲  
 export function kcdg(arg){
     return request({
         url:"/app/courseChapter",//主讲课程
@@ -82,12 +91,12 @@ export function kcdg(arg){
         method:"post"
     })
 }
-//courseInfo/团队介绍 id basis_Tuandui
-export function basis_Tuandui(arg){
+// 报名  baoming
+export function  baoming(arg){
     return request({
-        url:requers_url.basis_Tuandui+arg,//主讲课程
-        data:arg,
-        method:"get"
+        url:requers_url.baoming,//主讲课程
+        data:{arg},
+        method:"post"
     })
 }
 // 积分

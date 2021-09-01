@@ -121,7 +121,7 @@
       
       <!-- 底 -->
       <div class="btn">
-           <van-button type="danger" block>立即报名</van-button>
+           <van-button type="danger" block  @click="baoming">立即报名</van-button>
       </div>
     </div>   
 </template>
@@ -161,6 +161,13 @@ import {basis,kcdg} from "@/http/api"
                 this.basis_dgang=res.data.data[0]
              
               console.log(res.data.data[0],1111111)
+          },
+          baoming(){//报名
+              if (this.basis_Xq.price==this.basis_Xq.underlined_price) {
+                  this.$toast.fail('你来晚了，名额没有了')
+                  return  false
+              }
+              this.$router.push('/baoming?'+{type: "3"})
           }  
         }
     }

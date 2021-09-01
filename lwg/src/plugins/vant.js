@@ -3,7 +3,7 @@ import Vue from 'vue'
 import {Button,Tabbar, TabbarItem,Grid, GridItem ,Cell,
      CellGroup,Toast,Icon,Swipe, SwipeItem,Card,Tag,Checkbox,
      Tab, Tabs,Calendar,Dialog ,Search ,Popup,DropdownMenu,DropdownItem,Empty,
-     Collapse, CollapseItem} from "vant"
+     Collapse, CollapseItem,SubmitBar} from "vant"
 
 Vue.use(Button)
 Vue.use(Tabbar)
@@ -30,5 +30,5 @@ Vue.use(DropdownItem);
 Vue.use(Empty);
 Vue.use(Collapse);
 Vue.use(CollapseItem);
-
+Vue.use(SubmitBar);
 
