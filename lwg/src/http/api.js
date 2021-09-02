@@ -123,3 +123,47 @@ export function sigin(arg){
         method:"get"
     })
 }
+
+ 
+//add3  咨询同步:  zx_top  
+
+export function zx_top(arg){
+    return request({
+        url:requers_url.zx_top,
+        data:arg,
+        method:"get"
+    })
+}
+// zx 内容
+export function zx_conent(arg){
+    return request({
+        url:'/app/information/index',
+        data:arg,
+        method:"post"
+    })
+}
+// 咨询详情
+export function zx_detail(arg){
+    return request({
+        url:'/app/information/detail',
+        data:arg,
+        method:"post"
+    })
+}
+
+// add4 图书  
+ export function tu(){
+     return request({
+         url:"/app/book/classify",
+         methods:'get',
+         data:{},
+     })
+ }
+//  图书全部数据
+export function tuAll(arg){
+    return request({
+        url:"/app/book/list/0",
+        methods:'get',
+        data:{arg},
+    })
+}

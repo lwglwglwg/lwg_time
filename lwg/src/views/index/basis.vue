@@ -147,6 +147,8 @@ import {basis,kcdg} from "@/http/api"
           this.getZJ_Xq()
           this.getkcdg()
         },
+     
+
         methods:{
          async  getZJ_Xq(){
                 let res =await basis(this.basis_id)

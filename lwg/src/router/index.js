@@ -25,11 +25,11 @@ const routes = [
       },
       {
         path: '/zx',
-        component: () => import('@/views/zx')
+        component: () => import('@/views/zx/zx')
       },
       {
         path: '/books',
-        component: () => import('@/views/books')
+        component: () => import('@/views/tu/books')
       },
       {
         path: '/my',
@@ -89,7 +89,22 @@ const routes = [
 {
   path: '/baoming',//报名
   component: () => import('@/views/index/baoming')
-}
+},
+
+{                //咨询详情
+  path: '/zx_detail',
+  component: () => import('@/views/zx/zx_detail')
+},
+
+
+{                //首页搜索 
+  path: '/content',
+  component: () => import('@/views/index/content')
+},
+{                //搜索searchlist
+  path: '/searchlist',
+  component: () => import('@/views/index/searchlist')
+},
 
 ]
 

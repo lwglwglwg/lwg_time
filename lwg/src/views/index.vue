@@ -8,7 +8,7 @@
                <div class="dd">
                     <div class="ddd">
                         <van-icon name="orders-o"></van-icon>
-                         <span class="s">大威天龙</span>
+                         <span class="s" @click="$router.push('/content')">大威天龙</span>
                     </div>
                </div>
             </div>

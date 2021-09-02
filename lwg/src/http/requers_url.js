@@ -15,6 +15,9 @@ module.exports={
      
        kcdg:"/app/courseChapter",//字符魅力
     baoming:'/app/order/shopInfo',//报名
+
+    // zx
+    zx_top:'/app/information/classify',//咨询
 }
 
 

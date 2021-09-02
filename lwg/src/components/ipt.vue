@@ -4,9 +4,9 @@
 <van-search
   v-model="value"
   show-action
-  label="地址"
-  placeholder="请输入搜索关键词"
+  placeholder="请输入内容"
   @search="onSearch"
+  shape="round"
 >
   <template #action>
     <div @click="onSearch">搜索</div>
@@ -35,4 +35,7 @@
 
 <style lang="scss" scoped>
 
+ .van-search__content--round{
+  background: rgb(228, 231, 237);
+}
 </style>
